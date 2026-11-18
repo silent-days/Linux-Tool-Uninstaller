@@ -1,67 +1,215 @@
-# Linux Tool Uninstaller v5.0 — IVORY EDITION
+ <div align="center">
 
-**"LIGHT • SMOOTH • SHARP"** — Linux ke liye poora user-installed tool remover.
-Light white smooth theme, naya boot splash + logo, real tool icons, deep scan.
+<img src="LinuxToolUninstaller/assets/logo.png" alt="Linux Tool Uninstaller Logo" width="200">
 
-## Ye kya karta hai
+# Linux Tool Uninstaller
 
-- **DETECT (deep):** apt packages, .desktop apps, Flatpak, Snap, pip/pipx,
-  npm, gem, cargo/go, AppImages, `/opt` programs aur **GitHub se git-clone
-  kiye gaye tools** — sab ek hi list me, har row ke saath us tool ka asli
-  icon.
-- **REMOVE (sirf user-installed):** jo tools **aap ne khud** download/install
-  kiye hain (GitHub, online platforms, third-party repos, local `.deb`,
-  pip/npm/gem installs) — wo hi remove hote hain. Uninstall ke baad
-  **DEEP SCAN** leftover configs/caches/launchers bhi saaf karta hai
-  (Revo-style), dpkg-owned files safe rehte hain.
-- **PROTECT (shield):** Kali/Debian ke **apne repo** wale packages — default
-  tools, core utilities aur advanced/security tools — **KABHI delete nahi
-  hote**. Ye rows list me `PROTECTED` chip ke saath dim dikhti hain aur
-  uninstall par skip ho jati hain. Detection engine: `apt-cache policy`
-  repo-origin + fail-safe (origin confirm na ho to protected).
+### Advanced Linux Application & Tool Removal Manager
 
-## Install
+**Detect • Analyze • Uninstall • Clean • Protect**
 
-```sh
-cd LinuxToolUninstaller
-sudo sh install.sh        # /opt/linux-tool-uninstaller me install hota hai
+[![Version](https://img.shields.io/badge/Version-5.0-blue?style=for-the-badge)](https://github.com/silent-days/Linux-Tool-Uninstaller)
+[![Platform](https://img.shields.io/badge/Platform-Kali%20%7C%20Debian-orange?style=for-the-badge)](https://www.kali.org/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+
+**A powerful GUI-based Linux uninstaller designed to detect user-installed applications, remove unwanted tools, clean leftover files, and protect essential system packages.**
+
+</div>
+
+---
+
+## Overview
+
+**Linux Tool Uninstaller** is an advanced desktop utility built for Linux users who want better control over installed applications and tools.
+
+Featuring a modern Ivory Edition interface, it scans multiple installation sources, identifies custom-installed tools, removes unwanted applications, and detects leftover files after uninstallation.
+
+Its built-in protection system helps prevent the removal of Kali Linux and Debian distribution packages.
+
+## Key Features
+
+- **Deep Detection:** Detect applications and tools installed through APT, Flatpak, Snap, PIP, PIPX, NPM, GEM, Cargo, Go, AppImage, and GitHub repositories.
+- **Smart Uninstaller:** Identify and remove user-installed applications and third-party tools.
+- **Protected System Packages:** Protect Kali Linux and Debian repository packages from accidental removal.
+- **Deep Scan Engine:** Find leftover configurations, caches, launchers, and related files.
+- **Full Remove:** Automatically scan and clean eligible leftovers after uninstallation.
+- **Real Application Icons:** Display application icons for easier identification.
+- **Modern GUI:** Clean, lightweight Ivory Edition interface.
+- **Advanced Filtering:** Quickly filter applications by installation source and protection status.
+- **Package Safety:** Simulate APT removal operations before executing them.
+- **Diagnostics:** Built-in system and dependency checking.
+
+## Installation
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/silent-days/Linux-Tool-Uninstaller.git
 ```
 
-## Bina install chalao
+### 2. Enter Project Directory
 
-```sh
+```bash
+cd Linux-Tool-Uninstaller/LinuxToolUninstaller
+```
+
+### 3. Install Dependencies
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-tk
+```
+
+### 4. Install Linux Tool Uninstaller
+
+```bash
+sudo sh install.sh
+```
+
+### 5. Launch Application
+
+```bash
+linux-tool-uninstaller
+```
+
+---
+
+## Run Without Installation
+
+You can also launch the application directly without installing it system-wide.
+
+```bash
 cd LinuxToolUninstaller
+chmod +x run.sh
 ./run.sh
 ```
 
-(root ke liye pkexec/sudo password prompt aa sakta hai — GUI root me khulta
-hai, warna apt operations kaam nahi karte)
+**Note:** Root permissions may be required for package management and removal operations.
 
-## Commands
+## Usage
 
-| Command | Kaam |
-| --- | --- |
-| `linux-tool-uninstaller` | GUI launch |
-| `linux-tool-uninstaller --doctor` | Diagnostics (dependencies check) |
-| `sudo sh /opt/linux-tool-uninstaller/uninstall_me.sh` | Tool ko system se hatao |
+1. Launch Linux Tool Uninstaller.
+2. Allow the application to scan installed applications and tools.
+3. Browse detected applications in the main interface.
+4. Use filters to find specific tools.
+5. Select the application you want to remove.
+6. Review the removal confirmation.
+7. Enable **FULL REMOVE** to clean eligible leftovers automatically.
+8. Confirm the operation.
 
-## GUI shortcuts
+You can also use **DEEP SCAN** to search for leftover files separately.
 
-- `Ctrl+F` search • `Ctrl+A` select all • `F5` refresh • right-click menu
-- Filters: APPS / ALL / APT PKGS / GITHUB-CUSTOM / PIP-NPM-GEM / PROTECTED / > 100 MB
-- **DEEP SCAN** button: selected tools ke leftovers scan + delete
-- **FULL REMOVE** checkbox: uninstall ke baad leftovers automatic saaf
+## Available Filters
 
-## Safety
+| Filter | Description |
+|---|---|
+| APPS | Desktop applications |
+| ALL | All detected entries |
+| APT PKGS | APT packages |
+| GITHUB-CUSTOM | Custom GitHub tools |
+| PIP-NPM-GEM | Python, Node.js and Ruby tools |
+| PROTECTED | Protected system packages |
+| > 100 MB | Large applications and packages |
 
-- `linux-image`, `grub`, `kali-*`, `xserver-xorg`, coreutils jaise critical
-  packages hard-blocked hain (CRITICAL_EXACT + CRITICAL_PREFIX).
-- APT removal se pehle **simulation** (`apt-get -s`) chalti hai — agar
-  essential packages remove hone wale hon to operation abort.
-- Global autoremove KABHI nahi chalta — sirf is removal ke orphan dependencies
-  (cap 200) utaari jati hain.
-- dpkg-owned files deep scan me kabhi delete-candidate nahi bante.
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|---|---|
+| `Ctrl + F` | Search applications |
+| `Ctrl + A` | Select all |
+| `F5` | Refresh application list |
+| `Right Click` | Open context menu |
+
+## System Protection
+
+Linux Tool Uninstaller includes multiple safety mechanisms to help protect your operating system.
+
+- Protects Kali Linux and Debian repository packages.
+- Uses package repository origin detection.
+- Applies fail-safe protection when package origin cannot be verified.
+- Blocks critical system packages and protected package patterns.
+- Simulates APT removal before executing operations.
+- Aborts removal if essential packages are detected in the removal plan.
+- Avoids global `apt autoremove`.
+- Excludes dpkg-owned files from deep-scan deletion candidates.
+
+**Important:** Always review the selected applications and removal confirmation before proceeding. No automated uninstaller can guarantee protection against every possible system configuration.
+
+## Diagnostics
+
+Run the built-in diagnostic command to check application dependencies and system readiness.
+
+```bash
+linux-tool-uninstaller --doctor
+```
+
+## Uninstall Linux Tool Uninstaller
+
+To remove Linux Tool Uninstaller from your system:
+
+```bash
+sudo sh /opt/linux-tool-uninstaller/uninstall_me.sh
+```
+
+This removes the installed application, launcher, and desktop entry.
+
+## Project Structure
+
+```text
+Linux-Tool-Uninstaller/
+│
+├── logo.png
+├── LICENSE
+├── README.md
+│
+└── LinuxToolUninstaller/
+    │
+    ├── README.md
+    ├── linux_tool_uninstaller.py
+    ├── install.sh
+    ├── run.sh
+    ├── uninstall_me.sh
+    │
+    └── assets/
+        ├── logo.png
+        ├── logo_small.png
+        └── splash.png
+```
+
+## Technology Stack
+
+- **Python 3** – Core application logic
+- **Tkinter** – Graphical user interface
+- **APT / DPKG** – Debian package management
+- **Shell Script** – Installation and removal automation
+- **Linux System Utilities** – Application and package detection
+
+## Compatibility
+
+Designed primarily for:
+
+- Kali Linux
+- Debian-based Linux distributions
+
+Some detection and removal features depend on the relevant package managers and utilities being installed.
 
 ## License
 
-Original LICENSE file dekhein.
+This project is licensed under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+### Linux Tool Uninstaller
+
+**Take Control of Your Linux System.**
+
+Built with ❤️ by **Silent Days**
+
+[GitHub Repository](https://github.com/silent-days/Linux-Tool-Uninstaller)
+
+</div>
